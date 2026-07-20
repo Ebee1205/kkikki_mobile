@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import router from '.route/router.jsx';
 import './styles/yogiyo.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
