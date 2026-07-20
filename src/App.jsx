@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -6,57 +5,20 @@ function App() {
    * 1. 선언부
    * ================================================== */
 
-  // 상태
-  const [count, setCount] = useState(0);
-  const [message, setMessage] = useState('');
-
-  // DOM 참조
-  const inputRef = useRef(null);
-
-  // 일반 변수
-  const title = 'React Example';
+  const categories = ['한식', '치킨', '분식', '카페·디저트'];
 
 
   /* ==================================================
    * 2. 라이프사이클 관리
    * ================================================== */
 
-  // 컴포넌트 최초 마운트
-  useEffect(() => {
-    console.log('컴포넌트가 마운트되었습니다.');
-
-    // 컴포넌트 언마운트
-    return () => {
-      console.log('컴포넌트가 언마운트되었습니다.');
-    };
-  }, []);
-
-  // count 변경 감지
-  useEffect(() => {
-    console.log('count 변경:', count);
-  }, [count]);
-
 
   /* ==================================================
    * 3. 함수부
    * ================================================== */
 
-  const handleIncrease = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  const handleDecrease = () => {
-    setCount((prevCount) => prevCount - 1);
-  };
-
-  const handleMessageChange = (event) => {
-    setMessage(event.target.value);
-  };
-
-  const handleReset = () => {
-    setCount(0);
-    setMessage('');
-    inputRef.current?.focus();
+  const handleSearch = () => {
+    console.log('검색');
   };
 
 
@@ -65,36 +27,60 @@ function App() {
    * ================================================== */
 
   return (
-    <main className="app">
-      <h1>{title}</h1>
+    <main className="yg-page">
+      <div className="yg-container">
+        <section className="yg-section yg-column">
+          <span className="yg-badge">오늘의 추천</span>
 
-      <section className="counter">
-        <button type="button" onClick={handleDecrease}>
-          감소
+          <h1 className="yg-page-title">
+            지금 어떤 음식이
+            <br />
+            생각나시나요?
+          </h1>
+
+          <p className="yg-description">
+            원하는 메뉴나 가게를 검색해 보세요.
+          </p>
+        </section>
+
+        <section className="yg-section">
+          <div className="yg-field">
+            <label className="yg-label" htmlFor="keyword">
+              메뉴 검색
+            </label>
+
+            <input
+              id="keyword"
+              className="yg-input"
+              placeholder="메뉴 또는 가게 이름"
+            />
+          </div>
+        </section>
+
+        <section className="yg-section">
+          <h2 className="yg-section-title">카테고리</h2>
+
+          <div className="app__category-list">
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className="yg-category"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <button
+          type="button"
+          className="yg-button yg-button--primary yg-button--full"
+          onClick={handleSearch}
+        >
+          맛집 찾기
         </button>
-
-        <span>{count}</span>
-
-        <button type="button" onClick={handleIncrease}>
-          증가
-        </button>
-      </section>
-
-      <section className="message">
-        <input
-          ref={inputRef}
-          type="text"
-          value={message}
-          onChange={handleMessageChange}
-          placeholder="메시지를 입력하세요."
-        />
-
-        <p>{message}</p>
-      </section>
-
-      <button type="button" onClick={handleReset}>
-        초기화
-      </button>
+      </div>
     </main>
   );
 }

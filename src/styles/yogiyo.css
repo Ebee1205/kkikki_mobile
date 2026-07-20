@@ -1,0 +1,435 @@
+/* src/styles/yg.css */
+
+/* ==================================================
+ * 1. 디자인 토큰
+ * ================================================== */
+
+:root {
+  /* 브랜드 컬러 */
+  --yg-primary: #ff0050;
+  --yg-primary-hover: #e60048;
+  --yg-primary-active: #cc0040;
+  --yg-primary-light: #fff0f5;
+
+  /* 기본 컬러 */
+  --yg-black: #181818;
+  --yg-text: #222222;
+  --yg-text-sub: #666666;
+  --yg-text-muted: #999999;
+
+  --yg-white: #ffffff;
+  --yg-background: #f7f7f7;
+  --yg-surface: #ffffff;
+
+  --yg-border: #e5e5e5;
+  --yg-border-dark: #cccccc;
+
+  --yg-success: #1c9c5e;
+  --yg-warning: #ff9f1c;
+  --yg-error: #e52929;
+
+  /* 간격 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* 모서리 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-round: 9999px;
+
+  /* 그림자 */
+  --shadow-sm: 0 2px 8px rgb(0 0 0 / 6%);
+  --shadow-md: 0 6px 20px rgb(0 0 0 / 10%);
+
+  /* 레이아웃 */
+  --content-width: 1200px;
+  --header-height: 64px;
+}
+
+
+/* ==================================================
+ * 2. CSS 초기화
+ * ================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+
+  background-color: var(--yg-background);
+  color: var(--yg-text);
+
+  font-family:
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Noto Sans KR",
+    sans-serif;
+
+  font-size: 16px;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+
+/* ==================================================
+ * 3. 공통 레이아웃
+ * ================================================== */
+
+.yg-container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.yg-page {
+  min-height: 100vh;
+  padding: var(--space-8) 0;
+}
+
+.yg-section {
+  margin-bottom: var(--space-8);
+}
+
+.yg-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.yg-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+
+/* ==================================================
+ * 4. 타이포그래피
+ * ================================================== */
+
+.yg-page-title {
+  color: var(--yg-black);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.yg-section-title {
+  color: var(--yg-black);
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.yg-description {
+  color: var(--yg-text-sub);
+  font-size: 14px;
+}
+
+.yg-caption {
+  color: var(--yg-text-muted);
+  font-size: 12px;
+}
+
+
+/* ==================================================
+ * 5. 버튼
+ * ================================================== */
+
+.yg-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  min-height: 48px;
+  padding: 0 var(--space-5);
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+
+  font-weight: 700;
+
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 100ms ease;
+}
+
+.yg-button:active {
+  transform: scale(0.98);
+}
+
+.yg-button--primary {
+  background-color: var(--yg-primary);
+  color: var(--yg-white);
+}
+
+.yg-button--primary:hover {
+  background-color: var(--yg-primary-hover);
+}
+
+.yg-button--outline {
+  background-color: var(--yg-white);
+  border-color: var(--yg-primary);
+  color: var(--yg-primary);
+}
+
+.yg-button--outline:hover {
+  background-color: var(--yg-primary-light);
+}
+
+.yg-button--secondary {
+  background-color: #eeeeee;
+  color: var(--yg-text);
+}
+
+.yg-button--full {
+  width: 100%;
+}
+
+.yg-button--small {
+  min-height: 36px;
+  padding: 0 var(--space-4);
+  font-size: 14px;
+}
+
+
+/* ==================================================
+ * 6. 입력창
+ * ================================================== */
+
+.yg-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.yg-label {
+  color: var(--yg-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.yg-input,
+.yg-select,
+.yg-textarea {
+  width: 100%;
+
+  background-color: var(--yg-white);
+  border: 1px solid var(--yg-border);
+  border-radius: var(--radius-md);
+
+  color: var(--yg-text);
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.yg-input,
+.yg-select {
+  min-height: 48px;
+  padding: 0 var(--space-4);
+}
+
+.yg-textarea {
+  min-height: 120px;
+  padding: var(--space-4);
+  resize: vertical;
+}
+
+.yg-input::placeholder,
+.yg-textarea::placeholder {
+  color: var(--yg-text-muted);
+}
+
+.yg-input:focus,
+.yg-select:focus,
+.yg-textarea:focus {
+  border-color: var(--yg-primary);
+  box-shadow: 0 0 0 3px rgb(255 0 80 / 10%);
+  outline: none;
+}
+
+.yg-input--error {
+  border-color: var(--yg-error);
+}
+
+.yg-field-error {
+  color: var(--yg-error);
+  font-size: 12px;
+}
+
+
+/* ==================================================
+ * 7. 카드
+ * ================================================== */
+
+.yg-card {
+  padding: var(--space-5);
+
+  background-color: var(--yg-surface);
+  border: 1px solid var(--yg-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.yg-card--clickable {
+  cursor: pointer;
+
+  transition:
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.yg-card--clickable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+
+/* ==================================================
+ * 8. 배지와 카테고리
+ * ================================================== */
+
+.yg-badge {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 26px;
+  padding: 0 var(--space-3);
+
+  background-color: var(--yg-primary-light);
+  border-radius: var(--radius-round);
+
+  color: var(--yg-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.yg-category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  min-width: 88px;
+  min-height: 88px;
+  padding: var(--space-3);
+
+  background-color: var(--yg-white);
+  border: 2px solid var(--yg-black);
+  border-radius: var(--radius-lg);
+
+  color: var(--yg-black);
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background-color 150ms ease,
+    transform 100ms ease;
+}
+
+.yg-category:hover {
+  background-color: var(--yg-primary-light);
+}
+
+.yg-category:active {
+  transform: scale(0.97);
+}
+
+.yg-category--selected {
+  background-color: var(--yg-primary);
+  border-color: var(--yg-primary);
+  color: var(--yg-white);
+}
+
+
+/* ==================================================
+ * 9. 유틸리티
+ * ================================================== */
+
+.yg-text-primary {
+  color: var(--yg-primary);
+}
+
+.yg-text-center {
+  text-align: center;
+}
+
+.yg-hidden {
+  display: none !important;
+}
