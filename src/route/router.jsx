@@ -11,15 +11,7 @@ const lazyPage = (importPage) => async () => {
 const router = createBrowserRouter([
   {
     path: '/',
-    lazy: lazyPage(() => import('./pages/HomePage.jsx')),
-  },
-  {
-    path: '/search',
-    lazy: lazyPage(() => import('./pages/SearchPage.jsx')),
-  },
-  {
-    path: '/result',
-    lazy: lazyPage(() => import('./pages/ResultPage.jsx')),
+    lazy: lazyPage(() => import('../App.jsx')),
   },
 ]);
 
